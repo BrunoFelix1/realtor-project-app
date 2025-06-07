@@ -1,2 +1,2 @@
 # realtor-project-app
-Aplicação web desenvolvida com foco em atender as necessidades de corretores de imóveis, oferecendo uma interface moderna e responsiva. O front-end é construído com React e estilizado com Tailwind CSS, garantindo agilidade no desenvolvimento e uma experiência de usuário otimizada.
+Web application designed to meet the needs of real estate agents, providing a modern and responsive interface. The front-end is built with React and styled using Tailwind CSS, ensuring fast development and an optimized user experience.
