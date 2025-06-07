@@ -1,0 +1,1 @@
+//componentes comuns tipo o de erro, de paginação, de tooltip e por ai vai
