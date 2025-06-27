@@ -1,18 +1,7 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardHeader } from "./components/ui/card"
+import AppRouter from "@/router";
 
 function App() {
-  return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Card>
-        <CardHeader>
-          Teste
-        </CardHeader>
-      <Button className="bg-black text-white">ola mundo, testando o tailwind e o shadcn</Button>
-
-      </Card>
-    </div>
-  )
+  return <AppRouter />;
 }
 
-export default App
+export default App;
