@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { login as loginService } from "./api/authService";
-import { User, Lock } from "lucide-react";
+import { User, Lock, Building2 } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -66,7 +66,7 @@ export default function Login() {
               className="absolute top-10 left-10 opacity-40"
             >
               <path
-                d="M60 0C93.1371 0 120 26.8629 120 60C120 93.1371 93.1371 120 60 120C26.8629 120 0 93.1371 0 60C0 26.8629 26.8629 0 60 0Z"
+                d="M60 0C93.1371 0 120 26.8629 120 60C120 93.1371 93.1371 120 60 120C26.8629 120 0 93.1371 0 60C0 26.8629 0 60 0Z"
                 fill="#fff"
                 fillOpacity="0.07"
               />
@@ -88,20 +88,22 @@ export default function Login() {
             </svg>
           </div>
           <div className="relative z-10 flex flex-col items-center">
-            <h2 className="text-3xl font-extrabold mb-2">Bem Vindo!</h2>
-            <p className="text-lg font-medium text-white/90 mb-4 text-center max-w-xs">
-              Entre para acessar nosso sistema.
-            </p>
+            <Building2 className="w-16 h-16 mb-4 text-white drop-shadow-lg" />
+            <h2 className="text-3xl font-extrabold mb-2 font-quicksand">
+              RealtorApp
+            </h2>
+
           </div>
         </div>
         {/* Lado direito: Formulário */}
         <div className="flex flex-col justify-center items-center w-full md:w-1/2 p-8 bg-card/95">
           <Card className="w-full max-w-md p-0 shadow-none border-none bg-transparent flex flex-col items-center">
-            <h1 className="text-2xl font-extrabold text-foreground mb-1 tracking-tight w-full text-left">
+            <Building2 className="w-12 h-12 text-primary mb-2" />
+            <h1 className="text-2xl font-extrabold text-foreground mb-1 tracking-tight w-full text-center font-quicksand">
               Entrar
             </h1>
             <form
-              className="w-full flex flex-col gap-5 mt-4"
+              className="w-full flex flex-col gap-5 mt-2"
               onSubmit={handleSubmit}
               autoComplete="on"
             >
@@ -157,7 +159,7 @@ export default function Login() {
               )}
               <Button
                 type="submit"
-                className="w-full h-11 rounded-full font-bold text-base bg-primary hover:bg-primary/90 text-primary-foreground transition-colors shadow-md mt-2 font-quicksand"
+                className="w-full h-11 rounded-full font-bold text-base bg-primary text-primary-foreground transition-colors shadow-md mt-2 font-quicksand"
                 disabled={loading}
               >
                 {loading ? "Entrando..." : "Entrar"}

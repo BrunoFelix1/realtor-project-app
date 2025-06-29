@@ -12,15 +12,17 @@ interface FeatureCardProps {
 
 export function FeatureCard({ icon, title, description, to }: FeatureCardProps) {
   return (
-    <Card className="h-full flex flex-col justify-between">
-      <CardHeader className="flex flex-col items-center gap-2 pb-2">
+    <Card className="h-full flex flex-col items-center justify-between py-5 px-2">
+      <CardHeader className="flex flex-col items-center gap-1 pb-1 pt-0">
         {icon}
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="text-base mt-1 mb-0 font-semibold text-center leading-tight">
+          {title}
+        </CardTitle>
       </CardHeader>
-      <div className="text-center text-sm text-muted-foreground px-4 pb-2 flex-1 flex items-center justify-center">
+      <div className="text-center text-sm text-muted-foreground px-2 mb-2 mt-0 leading-snug">
         {description}
       </div>
-      <CardAction className="flex justify-center w-full pb-4">
+      <CardAction className="flex justify-center w-full pt-0 pb-2">
         <Button asChild size="sm">
           <Link to={to}>Acessar</Link>
         </Button>

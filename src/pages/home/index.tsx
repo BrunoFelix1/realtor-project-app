@@ -1,9 +1,9 @@
-import { Building2, User, Calendar, KeyRound } from "lucide-react";
+import { Building2, User, Calendar, KeyRound, House } from "lucide-react";
 import { FeatureCard } from "@/components/common/FeatureCard";
 
 export default function Home() {
   return (
-    <main className="w-full min-h-[90vh] bg-gradient-to-br from-card to-background flex flex-col items-center justify-start pt-16 px-4">
+    <main className="w-full min-h-[85vh] bg-gradient-to-br from-card to-background flex flex-col items-center justify-start pt-16 px-4">
       <section className="flex flex-col items-center text-center mb-10">
         <Building2 className="w-20 h-20 text-primary mb-6 drop-shadow-lg" />
         <h1 className="text-5xl font-extrabold text-primary font-quicksand mb-3 drop-shadow-sm tracking-tight">
@@ -21,7 +21,7 @@ export default function Home() {
           to="/customers"
         />
         <FeatureCard
-          icon={<Building2 className="w-10 h-10 text-primary" />}
+          icon={<House className="w-10 h-10 text-primary" />}
           title="Propriedades"
           description="Controle seus imóveis."
           to="/properties"
