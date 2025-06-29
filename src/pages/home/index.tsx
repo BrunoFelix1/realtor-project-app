@@ -12,6 +12,11 @@ export default function Home() {
         <p className="text-lg text-muted-foreground mb-0 max-w-xl">
           Gestão imobiliária fácil e rápida.
         </p>
+        <img
+          src="forSale.png"
+          alt="Chave sendo entregue, simbolizando venda de imóvel"
+          className="w-64 mt-6 rounded-2xl border-4 border-primary/60 shadow-xl object-contain bg-white/10 backdrop-blur-sm"
+        />
       </section>
       <section className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-0">
         <FeatureCard
