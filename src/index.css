@@ -56,7 +56,7 @@
   --secondary-foreground: #1a2e3b;
   --muted: #e5eaf1;
   --muted-foreground: #6c757d;        /* Cinza para texto secundário */
-  --accent: #22c55e;                  /* Verde para sucesso/ações positivas */
+  --accent: #2563eb;                  /* Verde para sucesso/ações positivas */
   --accent-foreground: #f4f7fa;
   --destructive: #ef4444;             /* Vermelho para ações destrutivas */
   --border: #d1d5db;                  /* Cinza claro para bordas */
