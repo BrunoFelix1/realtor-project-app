@@ -1,1 +1,0 @@
-//pasta de constantes se precisar, tipo os tipos de casa etc.

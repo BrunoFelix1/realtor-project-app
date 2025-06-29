@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -43,71 +44,71 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #ffffff;
-  --foreground: #1e293b;
-  --card: #ffffff;
-  --card-foreground: #1e293b;
+  --background: #f4f7fa;              /* Fundo claro */
+  --foreground: #1a2e3b;              /* Texto principal escuro */
+  --card: #ffffff;                    /* Cartões brancos */
+  --card-foreground: #1a2e3b;
   --popover: #ffffff;
-  --popover-foreground: #1e293b;
-  --primary: #334155;
-  --primary-foreground: #f8fafc;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #334155;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #f1f5f9;
-  --accent-foreground: #334155;
-  --destructive: #dc2626;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #94a3b8;
-  --chart-1: #f97316;
-  --chart-2: #06b6d4;
-  --chart-3: #3b82f6;
-  --chart-4: #84cc16;
-  --chart-5: #eab308;
-  --sidebar: #f8fafc;
-  --sidebar-foreground: #1e293b;
-  --sidebar-primary: #334155;
-  --sidebar-primary-foreground: #f8fafc;
-  --sidebar-accent: #f1f5f9;
-  --sidebar-accent-foreground: #334155;
-  --sidebar-border: #e2e8f0;
-  --sidebar-ring: #94a3b8;
+  --popover-foreground: #1a2e3b;
+  --primary: #2563eb;                 /* Azul para destaques */
+  --primary-foreground: #f4f7fa;
+  --secondary: #e5eaf1;               /* Cinza azulado para elementos secundários */
+  --secondary-foreground: #1a2e3b;
+  --muted: #e5eaf1;
+  --muted-foreground: #6c757d;        /* Cinza para texto secundário */
+  --accent: #2563eb;                  /* Verde para sucesso/ações positivas */
+  --accent-foreground: #f4f7fa;
+  --destructive: #ef4444;             /* Vermelho para ações destrutivas */
+  --border: #d1d5db;                  /* Cinza claro para bordas */
+  --input: #d1d5db;
+  --ring: #2563eb;
+  --chart-1: #2563eb;                 /* Azul para gráficos */
+  --chart-2: #22c55e;                 /* Verde para gráficos */
+  --chart-3: #facc15;                 /* Amarelo para gráficos */
+  --chart-4: #a1a1aa;                 /* Cinza médio para gráficos */
+  --chart-5: #ef4444;                 /* Vermelho para gráficos */
+  --sidebar: #f4f7fa;
+  --sidebar-foreground: #1a2e3b;
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #f4f7fa;
+  --sidebar-accent: #22c55e;
+  --sidebar-accent-foreground: #f4f7fa;
+  --sidebar-border: #d1d5db;
+  --sidebar-ring: #2563eb;
 }
 
 .dark {
-  --background: #1e293b;
-  --foreground: #f8fafc;
-  --card: #334155;
-  --card-foreground: #f8fafc;
-  --popover: #334155;
-  --popover-foreground: #f8fafc;
-  --primary: #e2e8f0;
-  --primary-foreground: #334155;
-  --secondary: #475569;
-  --secondary-foreground: #f8fafc;
-  --muted: #475569;
-  --muted-foreground: #94a3b8;
-  --accent: #475569;
-  --accent-foreground: #f8fafc;
-  --destructive: #ef4444;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.15);
-  --ring: #64748b;
-  --chart-1: #3b82f6;
-  --chart-2: #10b981;
-  --chart-3: #f59e0b;
-  --chart-4: #8b5cf6;
-  --chart-5: #f97316;
-  --sidebar: #334155;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #3b82f6;
-  --sidebar-primary-foreground: #f8fafc;
-  --sidebar-accent: #475569;
-  --sidebar-accent-foreground: #f8fafc;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #64748b;
+  --background: #18202c;              /* Azul escuro para fundo */
+  --foreground: #f4f7fa;              /* Branco suave para texto */
+  --card: #223044;                    /* Azul acinzentado para cartões */
+  --card-foreground: #f4f7fa;
+  --popover: #223044;
+  --popover-foreground: #f4f7fa;
+  --primary: #3ba1da;                 /* Azul claro para destaques */
+  --primary-foreground: #18202c;
+  --secondary: #2d3a4a;               /* Cinza azulado para elementos secundários */
+  --secondary-foreground: #f4f7fa;
+  --muted: #2d3a4a;
+  --muted-foreground: #b0b8c1;        /* Cinza claro para texto secundário */
+  --accent: #4ecb8f;                  /* Verde para sucesso/ações positivas */
+  --accent-foreground: #18202c;
+  --destructive: #e05a47;             /* Vermelho para ações destrutivas */
+  --border: #2d3a4a;
+  --input: #2d3a4a;
+  --ring: #3ba1da;
+  --chart-1: #3ba1da;                 /* Azul para gráficos */
+  --chart-2: #4ecb8f;                 /* Verde para gráficos */
+  --chart-3: #f7c873;                 /* Amarelo para gráficos */
+  --chart-4: #b0b8c1;                 /* Cinza claro para gráficos */
+  --chart-5: #e05a47;                 /* Vermelho para gráficos */
+  --sidebar: #18202c;
+  --sidebar-foreground: #f4f7fa;
+  --sidebar-primary: #3ba1da;
+  --sidebar-primary-foreground: #18202c;
+  --sidebar-accent: #4ecb8f;
+  --sidebar-accent-foreground: #18202c;
+  --sidebar-border: #2d3a4a;
+  --sidebar-ring: #3ba1da;
 }
 
 @layer base {
@@ -116,5 +117,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Quicksand', system-ui, sans-serif;
   }
 }
+
+
