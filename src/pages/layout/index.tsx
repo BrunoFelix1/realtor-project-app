@@ -6,7 +6,7 @@ import {
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { Link, useLocation } from "react-router-dom";
-import { User, Home, Building2, Calendar, KeyRound, LogOut } from "lucide-react";
+import { User, Building2, Calendar, KeyRound, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -20,7 +20,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   return (
     <>
-      <header className="w-full bg-card/80 shadow-lg py-4 px-8 flex items-center justify-between min-h-[64px] z-20 relative">
+      <header className="w-full bg-card shadow-md py-4 px-8 flex items-center justify-between min-h-[64px] z-30 fixed top-0 left-0 right-0">
         <div className="flex items-center gap-3">
           <Link to="/home" className="text-xl font-bold text-primary font-quicksand">
             RealtorApp
@@ -55,7 +55,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <LogOut className="w-4 h-4" />
         </Button>
       </header>
-      <main className="w-full flex-1">{children}</main>
+      <main className="w-full flex-1 mt-17">{children}</main>
+      <footer className="w-full text-center text-xs text-muted-foreground bg-muted py-4 mt-10 border-t">
+        © {new Date().getFullYear()} RealtorApp · Programação 4
+      </footer>
     </>
   );
 }
