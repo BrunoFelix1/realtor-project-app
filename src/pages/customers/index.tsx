@@ -1,10 +1,12 @@
+import { Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Customer } from "@/types/Customer";
 import customersService from "@/api/customersService";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { CustomersTable } from "@/components/customers/CustomersTable";
+import { CustomerDialog } from "@/components/customers/CustomerDialog";
+import { DeleteCustomerDialog } from "@/components/customers/DeleteCustomerDialog";
+import { TableSearch } from "@/components/common/TableSearch";
 
 export default function Customers() {
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -14,6 +16,8 @@ export default function Customers() {
   const [editing, setEditing] = useState<Customer | null>(null);
   const [form, setForm] = useState<Omit<Customer, "id">>({ name: "", email: "", phone: "", type: "", document: "" });
   const [deleting, setDeleting] = useState<Customer | null>(null);
+  const [search, setSearch] = useState("");
+  const [searching, setSearching] = useState(false);
 
   const fetchCustomers = async () => {
     setLoading(true);
@@ -79,86 +83,99 @@ export default function Customers() {
     }
   };
 
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!search.trim()) return;
+    setLoading(true);
+    setError(null);
+    setSearching(true);
+    try {
+      let results: Customer[] = [];
+      //  e-mail
+      if (search.includes("@")) {
+        const customer = await customersService.findByEmail(search);
+        results = customer ? [customer] : [];
+      } else if (/^\d{11,}$/.test(search.replace(/\D/g, ""))) { // documento (apenas números, 11+)
+        const customer = await customersService.findByDocument(search);
+        results = customer ? [customer] : [];
+      } else {
+        results = await customersService.findByName(search); // nome normal
+      }
+      setCustomers(results);
+    } catch (e: any) {
+      setError(e.message || "Nenhum cliente encontrado");
+      setCustomers([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleClearSearch = () => {
+    setSearch("");
+    setSearching(false);
+    fetchCustomers();
+  };
+
   return (
-    <main className="w-full min-h-[85vh] bg-gradient-to-br from-card to-background flex flex-col items-center justify-start pt-16 px-4">
-      <section className="flex flex-col items-center text-center mb-10">
-        <h1 className="text-5xl font-extrabold text-primary font-quicksand mb-3 drop-shadow-sm tracking-tight">
-          Clientes
-        </h1>
-        <p className="text-lg text-muted-foreground mb-0 max-w-xl">
-          Gerencie seus clientes de forma eficiente.
-        </p>
-        <Button className="mt-6" onClick={() => handleOpenDialog()}>Novo Cliente</Button>
+    <main className="w-full min-h-[85vh] bg-gradient-to-br from-card to-background flex flex-col items-center justify-start pt-16 px-2 md:px-4">
+      <section className="w-full flex flex-col items-center mb-10">
+        <div className="flex flex-col items-center gap-2 mb-6">
+          <span className="inline-flex items-center justify-center rounded-full bg-primary/90 text-white shadow-lg p-3">
+            <Users className="w-7 h-7" />
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-primary font-quicksand drop-shadow-sm tracking-tight">
+            Clientes
+          </h1>
+        </div>
+        <div className="w-full flex flex-col md:flex-row md:items-end md:justify-between gap-4 max-w-3xl">
+          <TableSearch
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            onSubmit={handleSearch}
+            onClear={handleClearSearch}
+            placeholder="Buscar por nome, e-mail ou documento"
+            searching={searching}
+          />
+          <Button
+            className="rounded-full text-base font-bold shadow-md bg-primary hover:bg-primary/90 transition-all h-12 px-8 whitespace-nowrap md:ml-4"
+            style={{ minWidth: 180 }}
+            onClick={() => handleOpenDialog()}
+          >
+            + Novo Cliente
+          </Button>
+        </div>
       </section>
-      <section className="w-full max-w-6xl overflow-x-auto">
-        {loading ? (
-          <div className="text-center text-muted-foreground py-8">Carregando...</div>
-        ) : error ? (
-          <div className="text-center text-destructive py-8">{error}</div>
-        ) : customers.length === 0 ? (
-          <div className="text-center text-muted-foreground py-8">Nenhum cliente cadastrado.</div>
-        ) : (
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Nome</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Telefone</TableHead>
-                <TableHead>Tipo</TableHead>
-                <TableHead>Documento</TableHead>
-                <TableHead className="text-right">Ações</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {customers.map((customer) => (
-                <TableRow key={customer.id}>
-                  <TableCell>{customer.name}</TableCell>
-                  <TableCell>{customer.email}</TableCell>
-                  <TableCell>{customer.phone}</TableCell>
-                  <TableCell>{customer.type}</TableCell>
-                  <TableCell>{customer.document}</TableCell>
-                  <TableCell className="flex gap-2 justify-end">
-                    <Button size="sm" variant="outline" onClick={() => handleOpenDialog(customer)}>Editar</Button>
-                    <Button size="sm" variant="destructive" onClick={() => setDeleting(customer)}>Excluir</Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        )}
+      <section className="w-full max-w-6xl overflow-x-auto bg-card mt-2">
+        <div className="rounded-2xl shadow-md border border-border px-6 py-2 overflow-hidden">
+          {loading ? (
+            <div className="text-center text-muted-foreground py-12 text-lg animate-pulse">Carregando...</div>
+          ) : error ? (
+            <div className="text-center text-destructive py-12 text-lg font-semibold animate-fade-in">{error}</div>
+          ) : customers.length === 0 ? (
+            <div className="text-center text-muted-foreground py-12 text-lg">Nenhum cliente cadastrado.</div>
+          ) : (
+            <CustomersTable
+              customers={customers}
+              onEdit={handleOpenDialog}
+              onDelete={setDeleting}
+            />
+          )}
+        </div>
       </section>
-      {/* Dialog de criar/editar */}
-      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>{editing ? "Editar Cliente" : "Novo Cliente"}</DialogTitle>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
-            <Input name="name" placeholder="Nome" value={form.name} onChange={handleChange} required />
-            <Input name="email" placeholder="E-mail" value={form.email} onChange={handleChange} required type="email" />
-            <Input name="phone" placeholder="Telefone" value={form.phone} onChange={handleChange} required />
-            <Input name="type" placeholder="Tipo (ex: comprador, locatário)" value={form.type} onChange={handleChange} required />
-            <Input name="document" placeholder="Documento" value={form.document} onChange={handleChange} required />
-            <div className="flex gap-2 justify-end mt-2">
-              <Button type="button" variant="destructive" onClick={handleCloseDialog}>Cancelar</Button>
-              <Button type="submit">Salvar</Button>
-            </div>
-          </form>
-        </DialogContent>
-      </Dialog>
-      {/* Dialog de confirmação de exclusão */}
-      <Dialog open={!!deleting} onOpenChange={() => setDeleting(null)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Excluir Cliente</DialogTitle>
-          </DialogHeader>
-          <div>Tem certeza que deseja excluir o cliente <span className="font-bold">{deleting?.name}</span>?</div>
-          <div className="flex gap-2 justify-end mt-4">
-            <Button variant="outline" onClick={() => setDeleting(null)}>Cancelar</Button>
-            <Button variant="destructive" onClick={handleDelete}>Excluir</Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <CustomerDialog
+        open={openDialog}
+        editing={editing}
+        form={form}
+        onChange={handleChange}
+        onClose={handleCloseDialog}
+        onSubmit={handleSubmit}
+      />
+      <DeleteCustomerDialog
+        open={!!deleting}
+        customer={deleting}
+        onCancel={() => setDeleting(null)}
+        onConfirm={handleDelete}
+      />
     </main>
   );
 }
