@@ -10,7 +10,7 @@ export default function Home() {
           RealtorApp
         </h1>
         <p className="text-lg text-muted-foreground mb-0 max-w-xl">
-          Gestão imobiliária fácil e rápida.
+          Gestão imobiliária: Tranquila e Prática.
         </p>
         <img
           src="forSale.png"

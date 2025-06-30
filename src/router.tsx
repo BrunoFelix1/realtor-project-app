@@ -21,9 +21,7 @@ export default function AppRouter() {
           path="/customers"
           element={
             <Layout>
-              <Layout>
               <Customers/>
-              </Layout>
             </Layout>
           }
         />
