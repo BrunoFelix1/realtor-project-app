@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "@/pages/auth";
 import Home from "@/pages/home";
 import Layout from "@/pages/layout";
+import Customers from "./pages/customers";
 
 export default function AppRouter() {
   return (
@@ -13,6 +14,16 @@ export default function AppRouter() {
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/customers"
+          element={
+            <Layout>
+              <Layout>
+              <Customers/>
+              </Layout>
             </Layout>
           }
         />

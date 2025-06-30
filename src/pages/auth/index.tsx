@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { login as loginService } from "./api/authService";
+import { login as loginService } from "../../api/authService";
 import { User, Lock, Building2 } from "lucide-react";
 
 export default function Login() {
