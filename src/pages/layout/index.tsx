@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -8,6 +8,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { User, Building2, Calendar, KeyRound, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ConfirmDialog } from "@/components/common/ConfirmDialog";
 
 const navItems = [
   { label: "Clientes", to: "/customers", icon: <User className="ml-2 w-4 h-4 inline hover:text-card" /> },
@@ -18,6 +19,12 @@ const navItems = [
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
+  const [openLogout, setOpenLogout] = useState(false);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
+    window.location.href = "/";
+  };
   return (
     <>
       <header className="w-full bg-card shadow-md py-4 px-8 flex items-center justify-between min-h-[64px] z-30 fixed top-0 left-0 right-0">
@@ -46,15 +53,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           variant="destructive"
           className="bg-card border-none shadow-none text-destructive hover:text-card"
           size={"icon"}
-          onClick={() => {
-            localStorage.removeItem("token");
-            sessionStorage.removeItem("token");
-            window.location.href = "/";
-          }}
+          onClick={() => setOpenLogout(true)}
         >
           <LogOut className="w-4 h-4" />
         </Button>
       </header>
+      <ConfirmDialog
+        open={openLogout}
+        onOpenChange={setOpenLogout}
+        title="Sair do sistema"
+        description="Tem certeza que deseja sair?"
+        confirmText="Sair"
+        cancelText="Cancelar"
+        onConfirm={handleLogout}
+        confirmVariant="destructive"
+      />
       <main className="w-full flex-1 mt-17">{children}</main>
       <footer className="w-full text-center text-xs text-muted-foreground bg-muted py-4 mt-10 border-t">
         © {new Date().getFullYear()} RealtorApp · Programação 4
