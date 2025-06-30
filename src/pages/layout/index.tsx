@@ -44,7 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </nav>
         <Button
           variant="destructive"
-          className="bg-card shadow-none text-destructive hover:text-card"
+          className="bg-card border-none shadow-none text-destructive hover:text-card"
           size={"icon"}
           onClick={() => {
             localStorage.removeItem("token");
