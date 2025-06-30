@@ -28,13 +28,13 @@ export function TableSearch({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="rounded-lg border px-4 py-2 flex-1"
+        className="rounded-lg border px-4 py-2 flex-1 h-10"
       />
-      <Button type="submit" className="rounded-lg">
-        <Search></Search>
+      <Button type="submit" className="rounded-lg h-10 px-4 flex items-center justify-center min-w-[48px]">
+        <Search />
       </Button>
       {searching && onClear && (
-        <Button type="button" variant="outline" onClick={onClear} className="rounded-lg">Limpar</Button>
+        <Button type="button" variant="outline" onClick={onClear} className="rounded-lg h-10 px-4">Limpar</Button>
       )}
       {children}
     </form>

@@ -137,8 +137,8 @@ export default function Customers() {
             searching={searching}
           />
           <Button
-            className="rounded-full text-base font-bold shadow-md bg-primary hover:bg-primary/90 transition-all h-12 px-8 whitespace-nowrap md:ml-4"
-            style={{ minWidth: 180 }}
+            className="rounded-full text-base font-bold shadow-md bg-primary hover:bg-primary/90 transition-all h-10 px-6 whitespace-nowrap md:ml-4"
+            style={{ minWidth: 140 }}
             onClick={() => handleOpenDialog()}
           >
             + Novo Cliente
