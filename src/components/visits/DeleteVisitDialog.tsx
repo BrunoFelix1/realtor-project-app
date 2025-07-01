@@ -1,5 +1,5 @@
 import { ConfirmDialog } from '@/components/common/ConfirmDialog';
-import type { Visit } from '@/types/Visit';
+import type { Visit } from '@/types/Visits';
 
 interface Props {
   open: boolean;

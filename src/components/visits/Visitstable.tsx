@@ -1,5 +1,5 @@
 import { Pencil, Trash2 } from 'lucide-react';
-import type { Visit } from '@/types/Visit';
+import type { Visit } from '@/types/Visits';
 import { Button } from '@/components/ui/button';
 
 interface Props {

@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import type { Visit } from '@/types/Visit';
+import type { Visit } from '@/types/Visits';
 
 interface Props {
   open: boolean;

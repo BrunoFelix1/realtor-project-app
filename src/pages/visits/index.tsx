@@ -1,10 +1,10 @@
 import { CalendarPlus } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import type { Visit } from '@/types/Visit';
+import type { Visit } from '@/types/Visits';
 import visitsService from '@/api/visitsService';
 import { Button } from '@/components/ui/button';
 import { TableSearch } from '@/components/common/TableSearch';
-import { VisitsTable } from '@/components/visits/VisitsTable';
+import { VisitsTable } from '@/components/visits/Visitstable';
 import { VisitDialog } from '@/components/visits/VisitDialog';
 import { DeleteVisitDialog } from '@/components/visits/DeleteVisitDialog';
 
