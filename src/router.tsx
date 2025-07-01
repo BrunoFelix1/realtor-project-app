@@ -4,6 +4,7 @@ import Home      from "@/pages/home";
 import Layout    from "@/pages/layout";
 import Customers from "./pages/customers";
 import Visits    from "@/pages/visits";      //  ⬅️  NOVO  (crie src/pages/visits/index.tsx)
+import Properties from "@/pages/properties";
 
 export default function AppRouter() {
   return (
@@ -19,7 +20,14 @@ export default function AppRouter() {
             </Layout>
           }
         />
-
+        <Route
+          path="/properties"
+          element={
+            <Layout>
+              <Properties />
+            </Layout>
+          }
+        />
         <Route
           path="/customers"
           element={
