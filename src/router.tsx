@@ -5,6 +5,7 @@ import Layout    from "@/pages/layout";
 import Customers from "./pages/customers";
 import Visits    from "@/pages/visits";      //  ⬅️  NOVO  (crie src/pages/visits/index.tsx)
 import Properties from "@/pages/properties";
+import Rentals from "@/pages/rentals"; 
 
 export default function AppRouter() {
   return (
@@ -33,6 +34,14 @@ export default function AppRouter() {
           element={
             <Layout>
               <Customers />
+            </Layout>
+          }
+        />
+        <Route
+          path="/rentals"
+          element={
+            <Layout>
+              <Rentals />
             </Layout>
           }
         />
